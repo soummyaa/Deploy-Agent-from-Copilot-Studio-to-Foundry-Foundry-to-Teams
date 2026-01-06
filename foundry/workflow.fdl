@@ -1,0 +1,8 @@
+workflow:
+  nodes:
+    - id: intake
+      agent: claims-assistant
+      onMessage:
+        steps:
+          - call: claims_rag
+          - then: respond

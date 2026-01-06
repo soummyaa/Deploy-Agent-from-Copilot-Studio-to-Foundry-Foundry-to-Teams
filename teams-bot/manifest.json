@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "12345678-1234-1234-1234-123456789012",
+  "packageName": "com.example.claimsassistant",
+  "name": {
+    "short": "Claims Assistant",
+    "full": "Claims Assistant"
+  },
+  "developer": {
+    "name": "Your Organization",
+    "websiteUrl": "https://example.com",
+    "privacyUrl": "https://example.com/privacy",
+    "termsOfUseUrl": "https://example.com/terms"
+  },
+  "description": {
+    "short": "Ask policy and claims questions.",
+    "full": "Claims Assistant helps users ask questions about insurance policies and claims and retrieves answers from the Foundry agent."
+  },
+  "icons": {
+    "outline": "icons/outline.png",
+    "color": "icons/color.png"
+  },
+  "accentColor": "#60A18E",
+  "bots": [
+    {
+      "botId": "12345678-1234-1234-1234-123456789012",
+      "scopes": ["personal", "team"],
+      "supportsFiles": false,
+      "isNotificationOnly": false,
+      "needsChannelSelector": false,
+      "commandLists": [
+        {
+          "scopes": ["personal", "team"],
+          "commands": [
+            { "title": "help", "description": "List available commands" },
+            { "title": "ask", "description": "Ask a claims question" }
+          ]
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

@@ -1,0 +1,14 @@
+name: claims-assistant
+instructions: |
+  You are the Claims Assistant. Answer strictly from retrieved policy documents.
+  Always include citations (document title and section). If uncertain, ask for plan details.
+tools:
+  - name: claims_rag
+    type: search
+    endpoint: https://<YOUR-SEARCH>.search.windows.net
+    index: claims-policies
+    parameters:
+      topN: 3
+      useSemanticRanker: true
+policies:
+  citations: required
