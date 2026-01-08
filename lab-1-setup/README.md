@@ -1,18 +1,21 @@
-# Lab 1: Set Up Your Environment (15 min)
+# Lab 1: Set Up Your Environment (10 min)
 
-In this lab, you'll prepare your Azure resources and local development environment.
+In this lab, you'll prepare your local development environment to deploy your Copilot Studio agent to Teams.
 
 ## Prerequisites
 
 Before starting, ensure you have:
 
-- ✅ **Azure Subscription** with an Azure AI / OpenAI resource
-  - Must have a deployed **`gpt-4o`** model (or another LLM of your choice)
-  - Note the **endpoint URL** and an **API key** (or use `az login` for Azure AD authentication)
+- ✅ **Existing Copilot Studio Agent** 
+  - You've already built an agent in Copilot Studio
+  - You can access the agent's instructions and configuration
+- ✅ **Azure Subscription** (Commercial or Government)
+  - For **GCC High**: Access to Azure Government portal (portal.azure.us)
+  - For **Commercial**: Access to Azure portal (portal.azure.com)
 - ✅ **GitHub Account** with git CLI
 - ✅ **Node.js 18+** and npm installed
 - ✅ **TypeScript** knowledge (basic familiarity with async/await, REST APIs)
-- ✅ **Microsoft Teams Account** (optional for local testing; required for final deployment)
+- ✅ **Microsoft Teams Account** (GCC High or Commercial, matching your Azure subscription)
 
 ## Step 1: Clone the Repository
 
@@ -24,23 +27,21 @@ cd Deploy-Agent-from-Copilot-Studio-to-Foundry-Foundry-to-Teams
 ## Step 2: Review the Repository Structure
 
 ```
-teams-bot/                    # Your Teams bot proxy
+teams-bot/                    # Your Teams bot
 ├── src/
 │   ├── index.ts             # Express server with /health and /message endpoints
 │   └── handlers/
-│       └── claims.ts        # Azure Assistants API integration
+│       └── claims.ts        # Azure OpenAI Chat Completions integration
 ├── package.json             # Node dependencies
 ├── tsconfig.json            # TypeScript config
 ├── .env.example             # Environment variable template
 └── manifest.json            # Teams app configuration
 
-foundry/
-├── claims-assistant.agent.yaml   # Agent definition (optional, for reference)
-└── search-index-schema.json      # Search config (optional)
-
 corpus/
-└── claims-corpus.md         # Sample agent instructions
+└── claims-corpus.md         # Sample agent instructions (embedded in code)
 ```
+
+**Note**: The `corpus/claims-corpus.md` file shows an example. In Lab 2, you'll replace this with your actual Copilot Studio agent's instructions.
 
 ## Step 3: Install Bot Dependencies
 
@@ -83,15 +84,14 @@ Expected response (before adding credentials):
 }
 ```
 
-The `ready: false` is expected—it means you haven't set credentials yet. Leave the bot running for Lab 3.
+The `ready: false` is expected—it means you haven't configured Azure OpenAI yet. Leave the bot running for Lab 3.
 
 ## ✅ Lab 1 Complete
 
 You now have:
-- ✅ Azure resources configured with a deployed LLM model
 - ✅ Repository cloned and explored
 - ✅ Bot dependencies installed
 - ✅ Bot server running locally on port 3978
 - ✅ Health endpoint working (ready: false until credentials added)
 
-**Next Step:** Move to [Lab 2: Copilot Studio → Foundry](../lab-2-foundry/README.md)
+**Next Step:** Move to [Lab 2: Export from Copilot Studio & Configure Azure OpenAI](../lab-2-foundry/README.md)
